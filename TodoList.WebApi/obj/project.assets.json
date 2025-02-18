@@ -114,11 +114,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\DELL\\RiderProjects\\TodoList\\WebApi\\WebApi.csproj",
-      "projectName": "WebApi",
-      "projectPath": "C:\\Users\\DELL\\RiderProjects\\TodoList\\WebApi\\WebApi.csproj",
+      "projectUniqueName": "C:\\Users\\DELL\\RiderProjects\\TodoList\\TodoList.WebApi\\TodoList.WebApi.csproj",
+      "projectName": "TodoList.WebApi",
+      "projectPath": "C:\\Users\\DELL\\RiderProjects\\TodoList\\TodoList.WebApi\\TodoList.WebApi.csproj",
       "packagesPath": "C:\\Users\\DELL\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\DELL\\RiderProjects\\TodoList\\WebApi\\obj\\",
+      "outputPath": "C:\\Users\\DELL\\RiderProjects\\TodoList\\TodoList.WebApi\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\DELL\\AppData\\Roaming\\NuGet\\NuGet.Config"
