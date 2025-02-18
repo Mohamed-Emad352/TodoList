@@ -1,8 +1,8 @@
 {
   "Version": 1,
-  "Hash": "3fzD1EelHVW7I8sZnXbFvVts4pyDK1lx9zGyE0YOAsI=",
-  "Source": "WebApi",
-  "BasePath": "_content/WebApi",
+  "Hash": "KH3RlNvI6jETEoycxDMyeXbqRxQYEJOTDTsJg42sJ50=",
+  "Source": "TodoList.WebApi",
+  "BasePath": "_content/TodoList.WebApi",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
