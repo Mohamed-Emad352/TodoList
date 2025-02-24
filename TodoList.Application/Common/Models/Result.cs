@@ -3,17 +3,17 @@
 public class Result
 {
     public bool IsSuccess { get; }
-    public IEnumerable<string> Errors { get; }
+    public string[] Errors { get; }
 
     internal Result(bool isSuccess, IEnumerable<string> errors)
     {
         IsSuccess = isSuccess;
-        Errors = errors;
+        Errors = errors.ToArray();
     }
 
     public static Result Success()
     {
-        return new Result(true, new List<string>().ToArray());
+        return new Result(true, Array.Empty<string>());
     }
     
     public static Result Failure(IEnumerable<string> errors)
