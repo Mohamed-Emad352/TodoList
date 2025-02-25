@@ -18,10 +18,4 @@
       <ProjectReference Include="..\TodoList.Domain\TodoList.Domain.csproj" />
     </ItemGroup>
 
-    <ItemGroup>
-      <Folder Include="Features\TodoItems\Commands\DeleteTodoItem\" />
-      <Folder Include="Features\TodoItems\Commands\UpdateTodoItem\" />
-      <Folder Include="Features\TodoItems\Queries\GetTodoItems\" />
-    </ItemGroup>
-
 </Project>

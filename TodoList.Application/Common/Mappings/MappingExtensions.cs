@@ -4,8 +4,8 @@ namespace TodoList.Application.Common.Mappings;
 
 public static class MappingExtensions
 {
-    public static Task<PaginatedList<T>> ToPaginatedList<T>(this IQueryable<T> query, int pageNumber, int pageSize) where T : class
+    public static Task<PaginatedList<T>> ToPaginatedListAsync<T>(this IQueryable<T> query, int pageNumber, int pageSize) where T : class
     {
-        return PaginatedList<T>.CreatAsync(query, pageNumber, pageSize);
+        return PaginatedList<T>.CreateAsync(query, pageNumber, pageSize);
     }
 }

@@ -17,7 +17,7 @@ public class PaginatedList<T> where T : class
         TotalPages = (int)Math.Ceiling((double)totalCount / pageSize);
     }
 
-    public static async Task<PaginatedList<T>> CreatAsync(IQueryable<T> items, int pageNumber, int pageSize)
+    public static async Task<PaginatedList<T>> CreateAsync(IQueryable<T> items, int pageNumber, int pageSize)
     {
         var paginatedItems = await items.Skip(pageNumber * pageSize).Take(pageSize).AsNoTracking().ToListAsync();
         return new PaginatedList<T>(paginatedItems, pageNumber, pageSize, await items.CountAsync());
