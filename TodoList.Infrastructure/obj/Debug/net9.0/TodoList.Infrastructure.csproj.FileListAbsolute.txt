@@ -1,0 +1,12 @@
+C:\Users\memlu\RiderProjects\TodoList\TodoList.Infrastructure\bin\Debug\net9.0\TodoList.Infrastructure.deps.json
+C:\Users\memlu\RiderProjects\TodoList\TodoList.Infrastructure\bin\Debug\net9.0\TodoList.Infrastructure.dll
+C:\Users\memlu\RiderProjects\TodoList\TodoList.Infrastructure\bin\Debug\net9.0\TodoList.Infrastructure.pdb
+C:\Users\memlu\RiderProjects\TodoList\TodoList.Infrastructure\obj\Debug\net9.0\TodoList.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\memlu\RiderProjects\TodoList\TodoList.Infrastructure\obj\Debug\net9.0\TodoList.Infrastructure.AssemblyInfoInputs.cache
+C:\Users\memlu\RiderProjects\TodoList\TodoList.Infrastructure\obj\Debug\net9.0\TodoList.Infrastructure.AssemblyInfo.cs
+C:\Users\memlu\RiderProjects\TodoList\TodoList.Infrastructure\obj\Debug\net9.0\TodoList.Infrastructure.csproj.CoreCompileInputs.cache
+C:\Users\memlu\RiderProjects\TodoList\TodoList.Infrastructure\obj\Debug\net9.0\TodoList.Infrastructure.sourcelink.json
+C:\Users\memlu\RiderProjects\TodoList\TodoList.Infrastructure\obj\Debug\net9.0\TodoList.Infrastructure.dll
+C:\Users\memlu\RiderProjects\TodoList\TodoList.Infrastructure\obj\Debug\net9.0\refint\TodoList.Infrastructure.dll
+C:\Users\memlu\RiderProjects\TodoList\TodoList.Infrastructure\obj\Debug\net9.0\TodoList.Infrastructure.pdb
+C:\Users\memlu\RiderProjects\TodoList\TodoList.Infrastructure\obj\Debug\net9.0\ref\TodoList.Infrastructure.dll

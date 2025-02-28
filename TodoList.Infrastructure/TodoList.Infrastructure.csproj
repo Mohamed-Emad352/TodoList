@@ -7,9 +7,16 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Folder Include="Configurations\" />
-      <Folder Include="Interceptors\" />
       <Folder Include="Migrations\" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.2" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\TodoList.Application\TodoList.Application.csproj" />
+      <ProjectReference Include="..\TodoList.Domain\TodoList.Domain.csproj" />
     </ItemGroup>
 
 </Project>
