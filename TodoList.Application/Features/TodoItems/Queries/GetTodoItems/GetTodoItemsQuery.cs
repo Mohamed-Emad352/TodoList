@@ -1,9 +1,8 @@
-﻿using TodoList.Application.Common.Interfaces;
+﻿
+using TodoList.Application.Common.Models;
 
 namespace TodoList.Application.Features.TodoItems.Queries.GetTodoItems;
 
-public class GetTodoItemsQuery : IPaginatedRequest<TodoItemDto>
+public record GetTodoItemsQuery : PaginatedRequest<TodoItemDto>
 {
-    public int PageNumber { get; init; }
-    public int PageSize { get; init; }
 }
