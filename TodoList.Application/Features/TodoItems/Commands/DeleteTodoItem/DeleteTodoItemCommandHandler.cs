@@ -21,7 +21,7 @@ public class DeleteTodoItemCommandHandler : IRequestHandler<DeleteTodoItemComman
             throw new NotFoundException();
         }
         
-        _context.TodoItems.Remove(todoItem);
+        todoItem.DeletedAt = DateTimeOffset.UtcNow;
 
         await _context.SaveChangesAsync(cancellationToken);
 

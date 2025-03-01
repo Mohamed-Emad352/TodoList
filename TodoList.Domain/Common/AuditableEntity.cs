@@ -3,7 +3,6 @@
 public abstract class AuditableEntity
 {
     public DateTimeOffset Created { get; set; }
-    public DateTimeOffset? LastModified { get; set; }
-    public DateTimeOffset? Deleted { get; set; }
+    public DateTimeOffset? LastModifiedAt { get; set; }
     public DateTimeOffset? DeletedAt { get; set; }
 }

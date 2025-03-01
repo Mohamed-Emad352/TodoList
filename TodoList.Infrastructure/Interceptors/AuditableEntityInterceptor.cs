@@ -26,12 +26,12 @@ public class AuditableEntityInterceptor : SaveChangesInterceptor
         foreach (var entry in context.ChangeTracker.Entries<AuditableEntity>())
         {
             if (entry.State is not (EntityState.Added or EntityState.Modified)) continue;
-            var utcNow = DateTime.UtcNow;
+            var utcNow = DateTimeOffset.UtcNow;
             if (entry.State == EntityState.Added)
             {
                 entry.Entity.Created = utcNow;
-            } 
-            entry.Entity.LastModified = utcNow;
+            }
+            entry.Entity.LastModifiedAt = utcNow;
         }
     }
     
