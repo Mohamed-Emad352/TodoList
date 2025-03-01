@@ -90,3 +90,8 @@ C:\Users\memlu\RiderProjects\TodoList\TodoList.WebApi\obj\Debug\net9.0\refint\To
 C:\Users\memlu\RiderProjects\TodoList\TodoList.WebApi\obj\Debug\net9.0\TodoList.WebApi.pdb
 C:\Users\memlu\RiderProjects\TodoList\TodoList.WebApi\obj\Debug\net9.0\TodoList.WebApi.genruntimeconfig.cache
 C:\Users\memlu\RiderProjects\TodoList\TodoList.WebApi\obj\Debug\net9.0\ref\TodoList.WebApi.dll
+C:\Users\DELL\RiderProjects\TodoList\TodoList.WebApi\bin\Debug\net9.0\Microsoft.EntityFrameworkCore.Relational.dll
+C:\Users\DELL\RiderProjects\TodoList\TodoList.WebApi\bin\Debug\net9.0\Npgsql.dll
+C:\Users\DELL\RiderProjects\TodoList\TodoList.WebApi\bin\Debug\net9.0\Npgsql.EntityFrameworkCore.PostgreSQL.dll
+C:\Users\DELL\RiderProjects\TodoList\TodoList.WebApi\bin\Debug\net9.0\TodoList.Infrastructure.dll
+C:\Users\DELL\RiderProjects\TodoList\TodoList.WebApi\bin\Debug\net9.0\TodoList.Infrastructure.pdb
