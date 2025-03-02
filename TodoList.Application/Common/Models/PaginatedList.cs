@@ -19,7 +19,7 @@ public class PaginatedList<T> where T : class
 
     public static async Task<PaginatedList<T>> CreateAsync(IQueryable<T> items, int pageNumber, int pageSize)
     {
-        var paginatedItems = await items.Skip(pageNumber * pageSize).Take(pageSize).AsNoTracking().ToListAsync();
+        var paginatedItems = await items.Skip((pageNumber - 1) * pageSize).Take(pageSize).AsNoTracking().ToListAsync();
         return new PaginatedList<T>(paginatedItems, pageNumber, pageSize, await items.CountAsync());
     }
 }

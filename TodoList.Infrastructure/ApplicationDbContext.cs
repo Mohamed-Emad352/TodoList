@@ -1,6 +1,7 @@
 ﻿using System.Reflection;
 using Microsoft.EntityFrameworkCore;
 using TodoList.Application.Common.Interfaces;
+using TodoList.Domain.Common;
 using TodoList.Domain.Entities;
 
 namespace TodoList.Infrastructure;
@@ -15,6 +16,7 @@ public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options
     protected override void OnModelCreating(ModelBuilder builder)
     {
         base.OnModelCreating(builder);
+        ApplyGlobalSoftDeleteQueryFilter(builder);
         builder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
     }
     
@@ -24,5 +26,26 @@ public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options
         {
             optionsBuilder.UseNpgsql("Host=localhost;Port=5432;Database=todolists;Username=postgres;Password=123;");
         }
+    }
+
+    private void ApplyGlobalSoftDeleteQueryFilter(ModelBuilder builder)
+    {
+        var auditableEntities = builder.Model.GetEntityTypes()
+            .Where(entity => typeof(AuditableEntity).IsAssignableFrom(entity.ClrType));
+        
+        foreach (var entity in auditableEntities)
+        {
+            var method = typeof(ApplicationDbContext)
+                .GetMethod(nameof(ApplySoftDeleteQueryFilter), BindingFlags.Static | BindingFlags.NonPublic)!
+                .MakeGenericMethod(entity.ClrType);
+        
+            method.Invoke(null, [builder]);
+        }
+    }
+
+    private static void ApplySoftDeleteQueryFilter<TEntity>(ModelBuilder builder)
+     where TEntity : AuditableEntity
+    {
+        builder.Entity<TEntity>().HasQueryFilter(entity => !entity.DeletedAt.HasValue);
     }
 }
