@@ -5,6 +5,7 @@ using TodoList.Application.Features.TodoItems.Commands.CreateTodoItem;
 using TodoList.Application.Features.TodoItems.Commands.DeleteTodoItem;
 using TodoList.Application.Features.TodoItems.Commands.MarkTodoItemCommand;
 using TodoList.Application.Features.TodoItems.Commands.UpdateTodoItem;
+using TodoList.Application.Features.TodoItems.Queries.GetTodoItemById;
 using TodoList.Application.Features.TodoItems.Queries.GetTodoItems;
 
 namespace TodoList.Controllers;
@@ -59,6 +60,19 @@ public class TodoListsController : ControllerBase
         var todoItemId = await _mediator.Send(command, token);
 
         return Ok(todoItemId);
+    }
+
+    [HttpGet]
+    [Route("/api/[controller]/${id:guid}")]
+    public async Task<IActionResult> GetTodoItemById(Guid id, CancellationToken token)
+    {
+        var query = new GetTodoItemByIdQuery
+        {
+            Id = id
+        };
+
+        var todoItem = await _mediator.Send(query);
+        return Ok(todoItem);
     }
 
     [HttpPut]
