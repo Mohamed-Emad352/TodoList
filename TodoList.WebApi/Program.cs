@@ -24,7 +24,7 @@ if (app.Environment.IsDevelopment())
     app.MapScalarApiReference();
 }
 
-app.UseExceptionHandler(builder => {}); // ?? why the fuck without this empty lambda it doesn't work
+app.UseExceptionHandler(builder => {}); // ?? why without this empty lambda it doesn't work
 
 app.UseRouting();
 app.MapControllers();
