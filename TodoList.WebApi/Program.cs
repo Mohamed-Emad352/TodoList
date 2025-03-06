@@ -2,6 +2,7 @@ using Scalar.AspNetCore;
 using TodoList;
 using TodoList.Application;
 using TodoList.Infrastructure;
+using TodoList.Middlewares;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -24,8 +25,9 @@ if (app.Environment.IsDevelopment())
     app.MapScalarApiReference();
 }
 
-app.UseExceptionHandler(builder => {}); // ?? why without this empty lambda it doesn't work
-
+// app.UseExceptionHandler(builder => {}); // ?? why without this empty lambda it doesn't work
+app.UseExceptionHandlerMiddleware();
+    
 app.UseRouting();
 app.MapControllers();
 
