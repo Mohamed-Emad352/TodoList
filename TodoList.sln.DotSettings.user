@@ -7,5 +7,6 @@
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=6435a6c5_002D5645_002D4d44_002Daa07_002D24ff0d55f511/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="ValidationExceptionTests" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
   &lt;TestAncestor&gt;&#xD;
     &lt;TestId&gt;NUnit3x::83181FC7-E0AF-4F7A-911C-9103247C9A36::net9.0::Tests.ApplicationUnitTests.Exceptions.ValidationExceptionTests&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::83181FC7-E0AF-4F7A-911C-9103247C9A36::net9.0::Tests.ApplicationUnitTests.Features.TodoItems.CreateTodoItem.CreateTodoItemCommandHandlerTests&lt;/TestId&gt;&#xD;
   &lt;/TestAncestor&gt;&#xD;
 &lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>

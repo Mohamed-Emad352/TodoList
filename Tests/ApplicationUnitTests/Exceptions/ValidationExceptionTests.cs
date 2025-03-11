@@ -4,10 +4,11 @@ using NUnit.Framework;
 
 namespace Tests.ApplicationUnitTests.Exceptions;
 
+[TestFixture]
 public class ValidationExceptionTests
 {
     [Test]
-    public void DefaultConstructorShouldInitializeEmptyErrorsDictionary()
+    public void DefaultConstructor_ShouldInitializeEmptyErrorsDictionary()
     {
         var exception = new ValidationException();
         var errors = exception.Errors;
@@ -16,7 +17,7 @@ public class ValidationExceptionTests
     }
 
     [Test]
-    public void ParameterizedConstructorShouldCreateCorrectMultipleKeysDictionary()
+    public void Constructor_WithErrors_ShouldCreateCorrectMultipleKeysDictionary()
     {
         var validationFailures = new List<ValidationFailure>
         {
