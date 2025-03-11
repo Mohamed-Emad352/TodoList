@@ -36,10 +36,11 @@ public class ExceptionHandlerMiddleware
 
     private async Task HandleNotFoundException(HttpContext httpContext, Exception exception)
     {
+        httpContext.Response.StatusCode = StatusCodes.Status404NotFound;
+        
         await httpContext.Response.WriteAsJsonAsync(new ProblemDetails
         {
             Title = "Not found",
-            Status = StatusCodes.Status404NotFound,
             Detail = "Requested resource does not exist"
         });
     }
@@ -48,11 +49,12 @@ public class ExceptionHandlerMiddleware
     {
         var validationException = (ValidationException)exception;
         
+        httpContext.Response.StatusCode = StatusCodes.Status400BadRequest;
+        
         await httpContext.Response.WriteAsJsonAsync(new ValidationProblemDetails
         {
             Title = validationException.Message,
             Errors = validationException.Errors,
-            Status = StatusCodes.Status400BadRequest
         });
     }
 }
