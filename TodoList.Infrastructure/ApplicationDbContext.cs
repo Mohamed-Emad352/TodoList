@@ -1,13 +1,15 @@
 ﻿using System.Reflection;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using TodoList.Application.Common.Interfaces;
 using TodoList.Domain.Common;
 using TodoList.Domain.Entities;
+using TodoList.Infrastructure.Auth;
 
 namespace TodoList.Infrastructure;
 
 public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
-    : DbContext(options), IApplicationDbContext
+    : IdentityDbContext<ApplicationUser>(options), IApplicationDbContext
 {
     public ApplicationDbContext() : this(new DbContextOptions<ApplicationDbContext>()) { }
     

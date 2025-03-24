@@ -4,7 +4,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using TodoList.Application.Common.Interfaces;
+using TodoList.Infrastructure.Auth;
 using TodoList.Infrastructure.Interceptors;
+using IAuthService = TodoList.Application.Common.Interfaces.IAuthService;
 
 
 namespace TodoList.Infrastructure;
@@ -16,11 +18,15 @@ public static class DependencyInjection
         var connectionString = builder.Configuration.GetConnectionString("Default");
         
         builder.Services.AddScoped<ISaveChangesInterceptor, AuditableEntityInterceptor>();
+        
         builder.Services.AddDbContext<ApplicationDbContext>((serviceProvider, options) =>
         {
             options.AddInterceptors(serviceProvider.GetServices<ISaveChangesInterceptor>());
             options.UseNpgsql(connectionString);
         });
         builder.Services.AddScoped<IApplicationDbContext, ApplicationDbContext>(provider => provider.GetRequiredService<ApplicationDbContext>());
+        builder.Services.AddScoped<IAuthService, AuthService>();
+
+        builder.Services.Configure<JwtConfig>(builder.Configuration.GetSection("JwtConfig"));
     }
 }

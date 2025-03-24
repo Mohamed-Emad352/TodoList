@@ -13,7 +13,8 @@ public class CustomExceptionsHandler : IExceptionHandler
         _exceptionHandlers = new Dictionary<Type, Func<HttpContext, Exception, Task>>()
         {
             {typeof(NotFoundException), HandleNotFoundException},
-            {typeof(ValidationException), HandleValidationException}
+            {typeof(ValidationException), HandleValidationException},
+            {typeof(EmailAlreadyExistsException), HandleEmailAlreadyExistsException}
         };
     }
     
@@ -46,6 +47,15 @@ public class CustomExceptionsHandler : IExceptionHandler
         {
             Title = validationException.Message,
             Errors = validationException.Errors,
+            Status = StatusCodes.Status400BadRequest
+        });
+    }
+    
+    private async Task HandleEmailAlreadyExistsException(HttpContext httpContext, Exception exception)
+    {
+        await httpContext.Response.WriteAsJsonAsync(new ValidationProblemDetails
+        {
+            Title = "Email already exists",
             Status = StatusCodes.Status400BadRequest
         });
     }
