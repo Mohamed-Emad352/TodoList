@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -6,8 +7,6 @@ using Microsoft.Extensions.Hosting;
 using TodoList.Application.Common.Interfaces;
 using TodoList.Infrastructure.Auth;
 using TodoList.Infrastructure.Interceptors;
-using IAuthService = TodoList.Application.Common.Interfaces.IAuthService;
-
 
 namespace TodoList.Infrastructure;
 
@@ -27,6 +26,7 @@ public static class DependencyInjection
         builder.Services.AddScoped<IApplicationDbContext, ApplicationDbContext>(provider => provider.GetRequiredService<ApplicationDbContext>());
         builder.Services.AddScoped<IAuthService, AuthService>();
 
+        builder.Services.AddIdentity<ApplicationUser, IdentityRole>().AddEntityFrameworkStores<ApplicationDbContext>();
         builder.Services.Configure<JwtConfig>(builder.Configuration.GetSection("JwtConfig"));
     }
 }

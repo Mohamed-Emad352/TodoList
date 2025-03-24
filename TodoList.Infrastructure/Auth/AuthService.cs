@@ -30,9 +30,25 @@ public class AuthService : IAuthService
             throw new EmailAlreadyExistsException();
         }
 
-        var user = _mapper.Map<ApplicationUser>(model);
+        var user = new ApplicationUser
+        {
+            Email = model.Email,
+            FirstName = model.FirstName,
+            LastName = model.LastName,
+            UserName = model.Email
+        };
 
-        await _userManager.CreateAsync(user, model.Password);
+        var res = await _userManager.CreateAsync(user, model.Password);
+
+        if (!res.Succeeded)
+        {
+            return new AuthModel
+            {
+                IsAuthenticated = false,
+                Message = res.Errors.FirstOrDefault()!.Description
+            };
+        }
+        
         var token = await CreateJwtToken(user);
 
         return new AuthModel
@@ -43,14 +59,31 @@ public class AuthService : IAuthService
             Token = new JwtSecurityTokenHandler().WriteToken(token)
         };
     }
-    
+
+    public async Task<AuthModel> GetTokenAsync(LoginModel model)
+    {
+        var authModel = new AuthModel();
+        var user = await _userManager.FindByEmailAsync(model.Email);
+        if (user is null || !await _userManager.CheckPasswordAsync(user, model.Password))
+        {
+            throw new PasswordNotCorrectException();
+        }
+        
+        var token = await CreateJwtToken(user);
+        authModel.IsAuthenticated = true;
+        authModel.Token = new JwtSecurityTokenHandler().WriteToken(token);
+        authModel.Email = user.Email;
+        authModel.ExpiresOn = token.ValidTo;
+
+        return authModel;
+    }
+
     private async Task<JwtSecurityToken> CreateJwtToken(ApplicationUser user)
     {
         var userClaims = await _userManager.GetClaimsAsync(user);
 
         var claims = new[]
             {
-                new Claim(JwtRegisteredClaimNames.Sub, user.UserName),
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
                 new Claim(JwtRegisteredClaimNames.Email, user.Email),
                 new Claim("uid", user.Id)

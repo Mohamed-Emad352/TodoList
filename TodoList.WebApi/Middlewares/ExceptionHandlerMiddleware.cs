@@ -14,7 +14,9 @@ public class ExceptionHandlerMiddleware
         _exceptionHandlers = new Dictionary<Type, Func<HttpContext, Exception, Task>>()
         {
             {typeof(NotFoundException), HandleNotFoundException},
-            {typeof(ValidationException), HandleValidationException}
+            {typeof(ValidationException), HandleValidationException},
+            {typeof(EmailAlreadyExistsException), HandleEmailAlreadyExistsException},
+            {typeof(PasswordNotCorrectException), HandlePasswordNotCorrectException}
         };
     }
 
@@ -55,6 +57,26 @@ public class ExceptionHandlerMiddleware
         {
             Title = validationException.Message,
             Errors = validationException.Errors,
+        });
+    }
+    
+    private async Task HandleEmailAlreadyExistsException(HttpContext httpContext, Exception exception)
+    {
+        httpContext.Response.StatusCode = StatusCodes.Status400BadRequest;
+        await httpContext.Response.WriteAsJsonAsync(new ProblemDetails
+        {
+            Title = "Email already exists",
+            Status = StatusCodes.Status400BadRequest
+        });
+    }
+    
+    private async Task HandlePasswordNotCorrectException(HttpContext httpContext, Exception exception)
+    {
+        httpContext.Response.StatusCode = StatusCodes.Status400BadRequest;
+        await httpContext.Response.WriteAsJsonAsync(new ProblemDetails
+        {
+            Title = "Password is incorrect",
+            Status = StatusCodes.Status400BadRequest
         });
     }
 }

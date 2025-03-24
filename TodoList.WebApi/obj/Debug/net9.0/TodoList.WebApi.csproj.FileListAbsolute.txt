@@ -267,3 +267,11 @@ C:\Users\memlu\RiderProjects\TodoList\TodoList.WebApi\bin\Debug\net9.0\zh-Hant\M
 C:\Users\memlu\RiderProjects\TodoList\TodoList.WebApi\bin\Debug\net9.0\TodoList.Infrastructure.dll
 C:\Users\memlu\RiderProjects\TodoList\TodoList.WebApi\bin\Debug\net9.0\TodoList.Infrastructure.pdb
 C:\Users\DELL\RiderProjects\TodoList\TodoList.WebApi\bin\Debug\net9.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+C:\Users\DELL\RiderProjects\TodoList\TodoList.WebApi\bin\Debug\net9.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\DELL\RiderProjects\TodoList\TodoList.WebApi\bin\Debug\net9.0\Microsoft.IdentityModel.Abstractions.dll
+C:\Users\DELL\RiderProjects\TodoList\TodoList.WebApi\bin\Debug\net9.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\DELL\RiderProjects\TodoList\TodoList.WebApi\bin\Debug\net9.0\Microsoft.IdentityModel.Logging.dll
+C:\Users\DELL\RiderProjects\TodoList\TodoList.WebApi\bin\Debug\net9.0\Microsoft.IdentityModel.Protocols.dll
+C:\Users\DELL\RiderProjects\TodoList\TodoList.WebApi\bin\Debug\net9.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\DELL\RiderProjects\TodoList\TodoList.WebApi\bin\Debug\net9.0\Microsoft.IdentityModel.Tokens.dll
+C:\Users\DELL\RiderProjects\TodoList\TodoList.WebApi\bin\Debug\net9.0\System.IdentityModel.Tokens.Jwt.dll

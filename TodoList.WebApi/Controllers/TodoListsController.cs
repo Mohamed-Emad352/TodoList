@@ -1,6 +1,5 @@
-﻿using AutoMapper;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using TodoList.Application.Common.Interfaces;
 using TodoList.Application.Features.TodoItems.Commands.CreateTodoItem;
 using TodoList.Application.Features.TodoItems.Commands.DeleteTodoItem;
 using TodoList.Application.Features.TodoItems.Commands.MarkTodoItemCommand;
@@ -15,14 +14,10 @@ namespace TodoList.Controllers;
 public class TodoListsController : ControllerBase
 {
     private readonly IMediator _mediator;
-    private readonly IMapper _mapper;
-    private readonly IApplicationDbContext _dbContext;
 
-    public TodoListsController(IMediator mediator, IMapper mapper, IApplicationDbContext dbContext)
+    public TodoListsController(IMediator mediator)
     {
         _mediator = mediator;
-        _mapper = mapper;
-        _dbContext = dbContext;
     }
 
     [HttpPost]
@@ -32,7 +27,7 @@ public class TodoListsController : ControllerBase
 
         return Ok();
     }
-
+    
     [HttpGet]
     public async Task<IActionResult> GetAllTodoItems([FromQuery] GetTodoItemsQuery query, CancellationToken token)
     {
