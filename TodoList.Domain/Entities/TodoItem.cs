@@ -8,4 +8,7 @@ public class TodoItem : AuditableEntity
     public string Title { get; set; } = string.Empty;
     public string? Description { get; set; }
     public bool IsCompleted { get; set; }
+
+    public Guid? ParentId { get; set; }
+    public TodoItem? Parent { get; set; }
 }

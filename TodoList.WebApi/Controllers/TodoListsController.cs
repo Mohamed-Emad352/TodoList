@@ -9,6 +9,7 @@ using TodoList.Application.Features.TodoItems.Queries.GetTodoItems;
 
 namespace TodoList.Controllers;
 
+[Authorize]
 [ApiController]
 [Route("api/[controller]")]
 public class TodoListsController : ControllerBase

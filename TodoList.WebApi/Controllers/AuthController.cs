@@ -5,6 +5,7 @@ using TodoList.Application.Common.Models.Auth;
 
 namespace TodoList.Controllers;
 
+[AllowAnonymous]
 [ApiController]
 [Route("api/[controller]")]
 public class AuthController : ControllerBase
