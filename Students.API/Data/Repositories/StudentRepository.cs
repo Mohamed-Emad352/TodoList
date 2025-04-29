@@ -31,37 +31,10 @@ public class StudentRepository : IStudentRepository
             throw new ArgumentException("Fields to update cannot be empty", nameof(fields));
 
         var filter = Builders<Student>.Filter.Eq(s => s.Id, id);
-        var updates = new List<UpdateDefinition<Student>>();
-        var propertyCache = new Dictionary<string, PropertyInfo>();
+        var updatedFields = fields.Select(f => Builders<Student>.Update.Set(f.Key, f.Value)).ToArray();
+        var update = Builders<Student>.Update.Combine(updatedFields);
         
-        var studentProperties = typeof(Student).GetProperties(BindingFlags.IgnoreCase | BindingFlags.Public | BindingFlags.Instance);
-        foreach (var prop in studentProperties)
-        {
-            propertyCache[prop.Name] = prop;
-        }
-
-        foreach (var update in fields)
-        {
-            if (propertyCache.TryGetValue(update.Key, out var propertyInfo))
-            {
-                updates.Add(Builders<Student>.Update.Set(update.Key, update.Value));
-            }
-            else
-            {
-                throw new ArgumentException($"Invalid field name", update.Key);
-            }
-        }
-
-        if (updates.Count == 0)
-            throw new ArgumentException("No valid fields to update");
-
-        var combinedUpdate = Builders<Student>.Update.Combine(updates);
-        var result = await _studentsCollection.UpdateOneAsync(filter, combinedUpdate);
-
-        if (result.MatchedCount == 0)
-        {
-            throw new Exception($"Student with id {id} not found.");
-        }
+        await _studentsCollection.UpdateOneAsync(filter, update);
     }
 
     public async Task DeleteAsync(string id) =>
